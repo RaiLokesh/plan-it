@@ -32,13 +32,12 @@ class MainActivity : AppCompatActivity() {
 
         btnAddTodo.setOnClickListener {
             val todoTitle = etTodoTitle.text.toString()
-            //val todoDate = etTodoDate.text.toString()
-            if(todoTitle.isNotEmpty()) {
-                val todo = Todo(todoTitle)//.plus(todoDate)))
+            val todoDate = btnDateTime.text.toString()
+            if(todoTitle.isNotEmpty() && todoDate.isNotEmpty()) {
+                val todo = Todo((todoTitle.plus("  ").plus(todoDate)))
                 todoAdapter.addTodo(todo)
                 etTodoTitle.text.clear()
                 btnDateTime.text.clear()
-                //etTodoDate.text.clear()
             }
         }
     }
