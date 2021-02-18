@@ -18,21 +18,15 @@
 
     <EditText
         android:id="@+id/etTodoTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
         android:hint="Enter Assignment Name"
         app:layout_constraintBottom_toTopOf="@+id/btnAddTodo"
-        app:layout_constraintEnd_toStartOf="@+id/etTodoDate"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/etTodoDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Enter Submission Date"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddTodo"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvTodoItems" />
 
     <Button
         android:id="@+id/btnAddTodo"
@@ -40,9 +34,26 @@
         android:layout_height="wrap_content"
         android:text="Add Assignment"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etTodoTitle"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="@+id/etTodoDate" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Submission date"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddTodo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTodoTitle" />
+
+    <Button
+        android:id="@+id/btnTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Submission time"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddTodo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTodoTitle" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
