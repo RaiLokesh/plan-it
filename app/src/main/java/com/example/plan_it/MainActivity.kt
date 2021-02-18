@@ -15,11 +15,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var todoAdapter: TodoAdapter
-    /*var date: Int = 0
-    var month: Int = 0
-    var year: Int = 0
-    var hour: Int = 0
-    var min: Int = 0*/
+    
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
