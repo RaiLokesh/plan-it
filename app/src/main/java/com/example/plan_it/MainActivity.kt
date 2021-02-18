@@ -5,6 +5,7 @@ import android.app.TimePickerDialog
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,11 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var todoAdapter: TodoAdapter
+    /*var date: Int = 0
+    var month: Int = 0
+    var year: Int = 0
+    var hour: Int = 0
+    var min: Int = 0*/
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,30 +34,23 @@ class MainActivity : AppCompatActivity() {
             val todoTitle = etTodoTitle.text.toString()
             //val todoDate = etTodoDate.text.toString()
             if(todoTitle.isNotEmpty()) {
-                val todo = Todo((todoTitle.plus(" - ")))//.plus(todoDate)))
+                val todo = Todo(todoTitle)//.plus(todoDate)))
                 todoAdapter.addTodo(todo)
                 etTodoTitle.text.clear()
+                btnDateTime.text.clear()
                 //etTodoDate.text.clear()
             }
         }
-        btnDate.setOnClickListener {
-            val now = Calendar.getInstance()
-            val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ view, year, month, dayOfMonth ->
-                Toast.makeText(this, "Year : " + year
-                + "\nMonth : " + month
-                + "\nDate : " + dayOfMonth, Toast.LENGTH_SHORT).show()
-            },
-            now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH))
-            datePicker.show()
-        }
-        btnTime.setOnClickListener {
-            val now = Calendar.getInstance()
-            val timePicker = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener {view, hourOfDay, minute ->
-                Toast.makeText(this, "Hour : " + hourOfDay
-                + "\nMinute : " + minute, Toast.LENGTH_SHORT).show()
-            },
-            now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true)
-            timePicker.show()
-        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun openDateTimePicker(view: View) {
+        DatePickerDialog(this, DatePickerDialog.OnDateSetListener { datePicker, yy, mm, dd ->
+            var dt = "$dd/$mm/$yy"
+            TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { timePicker, hh, mi ->
+                dt = "$dt  $hh:$mi"
+                btnDateTime.setText(dt)
+            },10,15,true).show()
+        }, 2021,2,18).show()
     }
 }
