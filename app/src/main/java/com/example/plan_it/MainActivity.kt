@@ -44,12 +44,13 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun openDateTimePicker(view: View) {
+        var c = Calendar.getInstance()
         DatePickerDialog(this, DatePickerDialog.OnDateSetListener { datePicker, yy, mm, dd ->
             var dt = "$dd/$mm/$yy"
             TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { timePicker, hh, mi ->
                 dt = "$dt  $hh:$mi"
                 btnDateTime.setText(dt)
-            },10,15,true).show()
-        }, 2021,2,18).show()
+            },c.get(Calendar.HOUR), c.get(Calendar.MINUTE),true).show()
+        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
     }
 }
