@@ -10,12 +10,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
 import java.time.Year
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var todoAdapter: TodoAdapter
-    
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +30,19 @@ class MainActivity : AppCompatActivity() {
         btnAddTodo.setOnClickListener {
             val todoTitle = etTodoTitle.text.toString()
             val todoDate = btnDateTime.text.toString()
+
+            var today = Date()
+
+            var sdf = SimpleDateFormat("dd/MM/yyyy  HH:mm")
+
+            var dob = sdf.parse(todoDate)
+//Improve logic here
+            var days = (today.time - dob.time)/86400000
+            var hours = (today.time - dob.time)%86400000/3600000
+            var minutes = (today.time - dob.time)%86400000%3600000/60000
             if(todoTitle.isNotEmpty() && todoDate.isNotEmpty()) {
-                val todo = Todo((todoTitle.plus("  ").plus(todoDate)))
+                var remains = "$days days $hours hours $minutes mins"
+                val todo = Todo((todoTitle.plus("\n").plus(remains)))
                 todoAdapter.addTodo(todo)
                 etTodoTitle.text.clear()
                 btnDateTime.text.clear()
@@ -50,3 +62,5 @@ class MainActivity : AppCompatActivity() {
         }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
     }
 }
+
+
