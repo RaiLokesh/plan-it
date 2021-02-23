@@ -5,13 +5,13 @@ import android.app.TimePickerDialog
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
-import java.time.Year
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,19 +30,14 @@ class MainActivity : AppCompatActivity() {
         btnAddTodo.setOnClickListener {
             val todoTitle = etTodoTitle.text.toString()
             val todoDate = btnDateTime.text.toString()
-
+            
             var today = Date()
 
-            var sdf = SimpleDateFormat("dd/MM/yyyy  HH:mm")
-
-            var dob = sdf.parse(todoDate)
-//Improve logic here
-            var days = (today.time - dob.time)/86400000
-            var hours = (today.time - dob.time)%86400000/3600000
-            var minutes = (today.time - dob.time)%86400000%3600000/60000
             if(todoTitle.isNotEmpty() && todoDate.isNotEmpty()) {
-                var remains = "$days days $hours hours $minutes mins"
-                val todo = Todo((todoTitle.plus("\n").plus(remains)))
+                val todo = Todo((todoTitle.plus("\n").plus(todoDate)))
+                //val todo = Todo((("$dob.time").plus("\n").plus(today.time)))
+                //Log.d("today:", "$today.time")
+                //Log.d("date: ", "$dob.time")
                 todoAdapter.addTodo(todo)
                 etTodoTitle.text.clear()
                 btnDateTime.text.clear()
@@ -54,11 +49,11 @@ class MainActivity : AppCompatActivity() {
     fun openDateTimePicker(view: View) {
         var c = Calendar.getInstance()
         DatePickerDialog(this, DatePickerDialog.OnDateSetListener { datePicker, yy, mm, dd ->
-            var dt = "$dd/$mm/$yy"
+            var dt = "$dd/${mm+1}/$yy"
             TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { timePicker, hh, mi ->
-                dt = "$dt  $hh:$mi"
+                dt += " $hh:$mi"
                 btnDateTime.setText(dt)
-            },c.get(Calendar.HOUR), c.get(Calendar.MINUTE),true).show()
+            },c.get(Calendar.HOUR), c.get(Calendar.MINUTE),false).show()
         }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
     }
 }
