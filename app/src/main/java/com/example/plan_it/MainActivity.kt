@@ -5,13 +5,10 @@ import android.app.TimePickerDialog
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -31,10 +28,10 @@ class MainActivity : AppCompatActivity() {
             val todoTitle = etTodoTitle.text.toString()
             val todoDate = btnDateTime.text.toString()
 
-            var today = Date()
 
             if(todoTitle.isNotEmpty() && todoDate.isNotEmpty()) {
-                val todo = Todo((todoTitle.plus("\n").plus(todoDate)))
+                val todo = Todo(todoTitle, "Deadline: ".plus(todoDate))
+
                 todoAdapter.addTodo(todo)
                 etTodoTitle.text.clear()
                 btnDateTime.text.clear()

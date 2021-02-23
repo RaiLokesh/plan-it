@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
+import java.util.Collections.sort
 
 class TodoAdapter (
         private val items: MutableList<Todo>
@@ -28,7 +30,7 @@ class TodoAdapter (
     }
     fun addTodo(todo: Todo){
         items.add(todo)
-        notifyItemInserted(items.size - 1) //gotta change here to sort
+        notifyItemInserted(items.size - 1) //sorting-next
     }
     fun delTodos(){
         items.removeAll { todo ->
@@ -48,6 +50,7 @@ class TodoAdapter (
         holder.itemView.apply {
             tvTodoTitle.text = curTodo.title
             cbDone.isChecked = curTodo.isChecked
+            tvdate.text = curTodo.date
             toggleStrikeThrough(tvTodoTitle, curTodo.isChecked)
             cbDone.setOnCheckedChangeListener { _, ischecked ->
                 toggleStrikeThrough(tvTodoTitle, ischecked)
