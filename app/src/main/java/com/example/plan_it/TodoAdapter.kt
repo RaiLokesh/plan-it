@@ -30,6 +30,12 @@ class TodoAdapter (
         items.add(todo)
         notifyItemInserted(items.size - 1) //gotta change here to sort
     }
+    fun delTodos(){
+        items.removeAll { todo ->
+            todo.isChecked
+        }
+        notifyDataSetChanged()
+    }
     private fun toggleStrikeThrough(tvTodoTitle: TextView, isChecked: Boolean) {
         if (isChecked) {
             tvTodoTitle.paintFlags = tvTodoTitle.paintFlags or STRIKE_THRU_TEXT_FLAG

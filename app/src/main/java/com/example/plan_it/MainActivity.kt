@@ -35,13 +35,13 @@ class MainActivity : AppCompatActivity() {
 
             if(todoTitle.isNotEmpty() && todoDate.isNotEmpty()) {
                 val todo = Todo((todoTitle.plus("\n").plus(todoDate)))
-                //val todo = Todo((("$dob.time").plus("\n").plus(today.time)))
-                //Log.d("today:", "$today.time")
-                //Log.d("date: ", "$dob.time")
                 todoAdapter.addTodo(todo)
                 etTodoTitle.text.clear()
                 btnDateTime.text.clear()
             }
+        }
+        deletemarked.setOnClickListener{
+            todoAdapter.delTodos()
         }
     }
 
