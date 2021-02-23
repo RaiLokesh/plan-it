@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         btnAddTodo.setOnClickListener {
             val todoTitle = etTodoTitle.text.toString()
             val todoDate = btnDateTime.text.toString()
-            
+
             var today = Date()
 
             if(todoTitle.isNotEmpty() && todoDate.isNotEmpty()) {
