@@ -7,6 +7,10 @@ so I decided to create this app, in which I can schedule all my assignments and 
 
 Version 1.0 is released, will be adding more features as and when required. Feel free to suggest any improvements.
 
-![alt text](https://github.com/RaiLokesh/plan-it/blob/master/plan-it.jpeg?raw=true)
+<img src = "https://github.com/RaiLokesh/plan-it/blob/master/plan-it.jpeg" width="200" height="500">
 
-The app can be downloaded from: https://drive.google.com/file/d/19ZbPuP7jDacjGkqpuhnUWs7SXRncZ9h4/view?usp=sharing
+The app can be downloaded from: 
+
+app/release/app-release.apk
+	or directly from
+https://drive.google.com/file/d/19ZbPuP7jDacjGkqpuhnUWs7SXRncZ9h4/view?usp=sharing
