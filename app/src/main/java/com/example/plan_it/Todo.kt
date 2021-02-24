@@ -5,5 +5,4 @@ class Todo(
         val title: String,
         val date: String,
         var isChecked: Boolean = false
-
 )

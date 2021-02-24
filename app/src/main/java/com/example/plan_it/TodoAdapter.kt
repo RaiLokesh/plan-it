@@ -1,4 +1,6 @@
 package com.example.plan_it
+
+import android.content.SharedPreferences
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import kotlinx.android.synthetic.main.item_todo.view.*
 import android.view.LayoutInflater
@@ -7,10 +9,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
-import java.util.Collections.sort
+
 
 class TodoAdapter (
-        private val items: MutableList<Todo>
+        val items: MutableList<Todo>
 
 ) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
     class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -31,13 +33,16 @@ class TodoAdapter (
     fun addTodo(todo: Todo){
         items.add(todo)
         notifyItemInserted(items.size - 1) //sorting-next
+        //saveData()
     }
     fun delTodos(){
         items.removeAll { todo ->
             todo.isChecked
         }
         notifyDataSetChanged()
+        //saveData()
     }
+
     private fun toggleStrikeThrough(tvTodoTitle: TextView, isChecked: Boolean) {
         if (isChecked) {
             tvTodoTitle.paintFlags = tvTodoTitle.paintFlags or STRIKE_THRU_TEXT_FLAG
@@ -58,4 +63,5 @@ class TodoAdapter (
             }
         }
     }
+
 }
