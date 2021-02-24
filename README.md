@@ -9,7 +9,7 @@ Version 1.0 is released, will be adding more features as and when required. Feel
 
 <img src = "https://github.com/RaiLokesh/plan-it/blob/master/plan-it.jpeg" width="300" height="500">
 
-The app can be downloaded from: 
+<b>The app can be downloaded from:</b> 
 
 app/release/app-release.apk<br><br>
 	or directly from<br><br>
