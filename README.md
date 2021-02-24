@@ -7,7 +7,7 @@ so I decided to create this app, in which I can schedule all my assignments and 
 
 Version 1.0 is released, will be adding more features as and when required. Feel free to suggest any improvements.
 
-<img src = "https://github.com/RaiLokesh/plan-it/blob/master/plan-it.jpeg" width="300" height="500">
+<center><img src = "https://github.com/RaiLokesh/plan-it/blob/master/plan-it.jpeg" width="300" height="500"></center>
 
 The app can be downloaded from: 
 
