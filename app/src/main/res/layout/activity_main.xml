@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDE9ED"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTodoItems"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#BAB2B2"
+        android:fadingEdge="horizontal"
+        android:padding="16px"
+        app:barrierMargin="2px"
         app:layout_constraintBottom_toTopOf="@+id/etTodoTitle"
-        app:layout_constraintTop_toBottomOf="@+id/deletemarked"
-        tools:layout_editor_absoluteX="41dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deletemarked" />
 
     <EditText
         android:id="@+id/etTodoTitle"
