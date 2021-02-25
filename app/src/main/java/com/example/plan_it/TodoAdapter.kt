@@ -31,8 +31,14 @@ class TodoAdapter (
         return items.size
     }
     fun addTodo(todo: Todo){
-        items.add(todo)
-        notifyItemInserted(items.size - 1)
+
+        var position = 0
+        for (i in items){
+            if (i.date>todo.date) break
+            position += 1
+        }
+        items.add(position, todo)
+        notifyItemInserted(position)
     }
     fun delTodos(){
         items.removeAll { todo ->
