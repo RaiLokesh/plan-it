@@ -11,6 +11,7 @@ import android.preference.PreferenceManager
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -29,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         getUsers()
-        //todoAdapter = TodoAdapter(mutableListOf())
         rvTodoItems.adapter = todoAdapter
         rvTodoItems.layoutManager = LinearLayoutManager(this)
 
@@ -44,14 +44,16 @@ class MainActivity : AppCompatActivity() {
                 etTodoTitle.text.clear()
                 btnDateTime.text.clear()
             }
-            saveUsersToPreferences()
         }
         deletemarked.setOnClickListener{
             todoAdapter.delTodos()
+        }
+        save_changes.setOnClickListener{
             saveUsersToPreferences()
         }
     }
 
+    
     private fun saveUsersToPreferences(){
         val prefEditor = PreferenceManager.getDefaultSharedPreferences(this).edit()
         val jsonString = Gson().toJson(todoAdapter.items)

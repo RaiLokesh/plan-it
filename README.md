@@ -11,6 +11,4 @@ Version 1.0 is released, will be adding more features as and when required. Feel
 
 <b>The app can be downloaded from:</b> 
 
-app/release/app-release.apk<br><br>
-	or directly from<br><br>
-https://drive.google.com/file/d/19ZbPuP7jDacjGkqpuhnUWs7SXRncZ9h4/view?usp=sharing<br>
+app/release/app-release.apk<br>

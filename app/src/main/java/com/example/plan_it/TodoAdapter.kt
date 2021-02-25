@@ -32,15 +32,13 @@ class TodoAdapter (
     }
     fun addTodo(todo: Todo){
         items.add(todo)
-        notifyItemInserted(items.size - 1) //sorting-next
-        //saveData()
+        notifyItemInserted(items.size - 1)
     }
     fun delTodos(){
         items.removeAll { todo ->
             todo.isChecked
         }
         notifyDataSetChanged()
-        //saveData()
     }
 
     private fun toggleStrikeThrough(tvTodoTitle: TextView, isChecked: Boolean) {
@@ -60,6 +58,7 @@ class TodoAdapter (
             cbDone.setOnCheckedChangeListener { _, ischecked ->
                 toggleStrikeThrough(tvTodoTitle, ischecked)
                 curTodo.isChecked = !curTodo.isChecked
+
             }
         }
     }
