@@ -77,9 +77,19 @@ class MainActivity : AppCompatActivity() {
     fun openDateTimePicker(view: View) {
         var c = Calendar.getInstance()
         DatePickerDialog(this, DatePickerDialog.OnDateSetListener { datePicker, yy, mm, dd ->
-            var dt = "$dd/${mm+1}/$yy"
+            var dt : String = ""
+            dt += if("$dd".length<2) "0$dd/"
+            else "$dd/"
+            dt += if("${mm+1}".length<2) "0${mm+1}/"
+            else "${mm+1}/"
+            dt += "$yy"
+
             TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { timePicker, hh, mi ->
-                dt += " $hh:$mi"
+                dt += " "
+                dt += if("$hh".length<2) "0$hh:"
+                else "$hh:"
+                dt += if("$mi".length < 2) "0$mi"
+                else "$mi"
                 btnDateTime.setText(dt)
             },c.get(Calendar.HOUR), c.get(Calendar.MINUTE),false).show()
         }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show()
