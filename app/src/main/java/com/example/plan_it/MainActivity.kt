@@ -78,12 +78,12 @@ class MainActivity : AppCompatActivity() {
         var c = Calendar.getInstance()
         DatePickerDialog(this, DatePickerDialog.OnDateSetListener { datePicker, yy, mm, dd ->
             var dt : String = ""
-            dt += if("$dd".length<2) "0$dd/"
-            else "$dd/"
+            dt += "$yy/"
             dt += if("${mm+1}".length<2) "0${mm+1}/"
             else "${mm+1}/"
-            dt += "$yy"
-
+            dt += if("$dd".length<2) "0$dd"
+            else "$dd"
+            
             TimePickerDialog(this, TimePickerDialog.OnTimeSetListener { timePicker, hh, mi ->
                 dt += " "
                 dt += if("$hh".length<2) "0$hh:"
